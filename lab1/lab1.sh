@@ -2,8 +2,7 @@
 
 rm -rf ~/test
 rm -r ~/list*
-rm -r ~/hlink
-rm -r
+rm -r ~/man.txt
 
 # 1. создать каталог test в домашнем каталоге пользователя
 mkdir ~/test
