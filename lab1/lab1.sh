@@ -15,7 +15,7 @@ do
   if [[ -d "$f" ]] 
   then
     echo "dir: $f" >> list
-    let cnt_dirs = $cnt_dirs + 1
+    let cnt_dirs=cnt_dirs+1
    else
     echo "file: $f" >> list
   fi
@@ -27,7 +27,7 @@ do
     echo "dir: $f" >> list
    else
     echo "file: $f" >> list
-    cnt_hfiles = $cnt_hfiles + 1
+    let cnt_hfiles=cnt_hfiles+1
   fi
 done;
 
