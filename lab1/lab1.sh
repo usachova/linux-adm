@@ -1,8 +1,7 @@
 #!/bin/sh
 
-rm -rf ~/test
-rm -r ~/list*
-rm -r ~/man.txt
+rm -rf ~/test ~/man.dir
+rm -r ~/list* ~/man.txt
 
 # 1. создать каталог test в домашнем каталоге пользователя
 mkdir ~/test
@@ -133,7 +132,7 @@ diff -u ~/man.txt ~/test/man.dir/man.txt > ~/man_patch.txt
 mv ~/man_patch.txt ~/test/man.dir
 
 # 29. наложить патч из файла с разницей на man.txt в каталоге man.dir
-patch -t ~/test/man.dir/man.txt < ~/test/man.dir/man_patch.txt
+patch ~/test/man.dir/man.txt ~/test/man.dir/man_patch.txt
 
 # 30. сравнить файлы man.txt в домашней каталоге и в каталоге man.dir и вывести YES, если файлы идентичны
 if cmp ~/man.txt ~/test/man.dir/man.txt 
