@@ -2,6 +2,7 @@
 
 rm -rf ~/test
 rm -r ~/list
+rm -r ~/list1
 
 # 1. создать каталог test в домашнем каталоге пользователя
 mkdir ~/test
@@ -48,13 +49,13 @@ ln ~/test/list ~/test/links/list_hlink
 ln -s ~/test/list ~/test/links/list_slink
 
 # 7. вывести на экран количество..
-cnt_hlink=$(ls -l ~/test/links/list_hlink)
+cnt_hlink=$(ls -l ~/test/links/list_hlink | cut -d " " -f2)
 cnt_list=$(ls -l ~/test/list | cut -d " " -f2)
 cnt_slink=$(ls -l ~/test/links/list_slink | cut -d " " -f2)
 echo $cnt_hlink $cnt_list $cnt_slink
 
 # 8. дописать в конец файла list_hlink число строк в файле list
-wc -l ~/test/list >> ~/test/links/list_hlink
+wc -l ~/test/list | cut -d " " -f1 >> ~/test/links/list_hlink
 
 # 9. сравнить содержимое файлов list_hlink и list_slink
 if cmp ~/test/links/list_hlink ~/test/links/list_slink 
@@ -72,4 +73,29 @@ then
 fi
 
 # 12. cоздать в домашнем каталоге пользователя жесткую ссылку на каталог links
-ln ~/test/links ~/hlink
+# ln ~/test/links ~/hlink
+ln -s ~/test/links ~/hlink
+
+# 13. cоздать в домашнем каталоге файл list_conf, содержащий список файлов с расширением .conf, из каталога /etc и всех его подкаталогов
+find /etc/ type f -name "*.conf" > ~/list_conf
+
+# 14. создать в домашнем каталоге файл list_d, содержащий список всех подкаталогов каталога /etc, расширение которых .d
+find /etc/ type d -name "*.conf" > ~/list_d
+
+# 15. создать файл list_conf_d, включив в него последовательно содержимое list_conf и list_d
+cat ~/list_conf ~/list_d > ~/list_conf_d
+
+# 16. создать в каталоге test скрытый каталог sub
+mkdir ~/test/.sub
+
+# 17. скопировать в него файл list_conf_d
+cp ~/list_conf_d ~/test/.sub
+
+# 18. еще раз скопировать туда же этот же файл в режиме автоматического создания резервной копии замещаемых файлов
+cp -b ~/list_conf_d ~/test/.sub
+
+# 19. вывести на экран полный список файлов (включая все подкаталоги и их содержимое) каталога test
+find ~/test
+
+# 20. создать в домашнем каталоге файл man.txt, содержащий документацию на команду man
+man man > ~/man.txt
