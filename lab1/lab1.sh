@@ -77,10 +77,10 @@ fi
 ln -s ~/test/links ~/hlink
 
 # 13. cоздать в домашнем каталоге файл list_conf, содержащий список файлов с расширением .conf, из каталога /etc и всех его подкаталогов
-find /etc/ type f -name "*.conf" > ~/list_conf
+find /etc/ -type f -name "*.conf" > ~/list_conf
 
 # 14. создать в домашнем каталоге файл list_d, содержащий список всех подкаталогов каталога /etc, расширение которых .d
-find /etc/ type d -name "*.conf" > ~/list_d
+find /etc/ -type d -name "*.conf" > ~/list_d
 
 # 15. создать файл list_conf_d, включив в него последовательно содержимое list_conf и list_d
 cat ~/list_conf ~/list_d > ~/list_conf_d
