@@ -8,8 +8,8 @@ mkdir ~/test
 
 # 2. создать в нем файл list, содержащий список всех файлов и поддиректориев каталога /etc
 cd ~/test
-let cnt_dirs=0
-let cnt_hfiles=0
+cnt_dirs=0
+cnt_hfiles=0
 for f in /etc/*
 do
   if [[ -d "$f" ]] 
@@ -48,9 +48,9 @@ ln ~/test/list ~/test/links/list_hlink
 ln -s ~/test/list ~/test/links/list_slink
 
 # 7. вывести на экран количество..
-cnt_hlink = $(ls -l ~/test/links/list_hlink | cut -d " " -f2)
-cnt_list = $(ls -l ~/test/list | cut -d " " -f2)
-cnt_slink = $(ls -l ~/test/links/list_slink | cut -d " " -f2)
+cnt_hlink=$(ls -l ~/test/links/list_hlink | cut -d " " -f2)
+cnt_list=$(ls -l ~/test/list | cut -d " " -f2)
+cnt_slink=$(ls -l ~/test/links/list_slink | cut -d " " -f2)
 echo $cnt_hlink $cnt_list $cnt_slink
 
 # 8. дописать в конец файла list_hlink число строк в файле list
