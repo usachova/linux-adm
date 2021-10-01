@@ -53,6 +53,11 @@ cnt_list=$(ls -l ~/test/list | cut -d " " -f2)
 cnt_slink=$(ls -l ~/test/links/list_slink | cut -d " " -f2)
 echo $cnt_hlink $cnt_list $cnt_slink
 
+number_of_hl_hlink=$(find / -inum $(ls -i ~/test/links/list_hlink | awk '{print $1}') 2> /dev/null | wc -l)
+number_of_hl_list=$(find / -inum $(ls -i ~/test/list | awk '{print $1}') 2> /dev/null | wc -l)
+number_of_hl_slink=$(find / -inum $(ls -i ~/test/links/list_slink | awk '{print $1}') 2> /dev/null | wc -l)
+echo $number_of_hl_hlink $number_of_hl_list $number_of_hl_slink
+
 # 8. дописать в конец файла list_hlink число строк в файле list
 wc -l ~/test/list >> ~/test/links/list_hlink
 
