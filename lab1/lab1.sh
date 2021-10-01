@@ -135,7 +135,7 @@ mv ~/man_patch.txt ~/test/man.dir
 # 29. наложить патч из файла с разницей на man.txt в каталоге man.dir
 patch ~/test/man.dir/man.txt ~/test/man.dir/man_patch.txt
 
-# 30. Сравнить файлы man.txt в домашней каталоге и в каталоге man.dir и вывести YES, если файлы идентичны.
+# 30. сравнить файлы man.txt в домашней каталоге и в каталоге man.dir и вывести YES, если файлы идентичны
 if cmp ~/man.txt ~/test/man.dir/man.txt 
 then
   echo "30. YES"
