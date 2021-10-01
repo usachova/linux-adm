@@ -22,7 +22,7 @@ do
 done;
 for f in /etc/.*
 do
-  if [[ -d "$f" && ("$f" != "/etc/." && "$f" != "/etc/..") ]] 
+  if [[ -d "$f" && "$f" != "/etc/." && "$f" != "/etc/.." ]] 
   then
     echo "dir: $f" >> list
    else
