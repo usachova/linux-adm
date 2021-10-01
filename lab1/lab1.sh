@@ -8,7 +8,7 @@ mkdir ~/test
 
 # 2. создать в нем файл list, содержащий список всех файлов и поддиректориев каталога /etc
 cd ~/test
-let $cnt_dirs=0
+let cnt_dirs=0
 let cnt_hfiles=0
 for f in /etc/*
 do
