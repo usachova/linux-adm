@@ -12,8 +12,19 @@ for f in /etc/*
 do
   if [[ -d "$f" ]] 
   then
-    echo "/$f" >> list
+    echo "dir: $f" >> list
    else
-    echo "$f" >> list
+    echo "file: $f" >> list
+  fi
+done;
+
+
+for f in /etc/.*
+do
+  if [[ -d "$f" ]] 
+  then
+    echo "dir: $f" >> list
+   else
+    echo "file: $f" >> list
   fi
 done;
