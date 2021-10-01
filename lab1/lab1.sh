@@ -22,12 +22,14 @@ do
 done;
 for f in /etc/.*
 do
-  if [[ -d "$f" && "$f" != "/etc/." && "$f" != "/etc/.." ]] 
-  then
-    echo "dir: $f" >> list
-   else
-    echo "file: $f" >> list
-    let cnt_hfiles=cnt_hfiles+1
+  if [["$f" != "/etc/." && "$f" != "/etc/.." ]] 
+    if [[ -d "$f" && "$f" != "/etc/." && "$f" != "/etc/.." ]] 
+    then
+      echo "dir: $f" >> list
+    else
+      echo "file: $f" >> list
+      let cnt_hfiles=cnt_hfiles+1
+    fi
   fi
 done;
 
