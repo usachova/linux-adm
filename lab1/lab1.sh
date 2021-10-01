@@ -1,8 +1,9 @@
 #!/bin/sh
 
 rm -rf ~/test
-rm -r ~/list
-rm -r ~/list1
+rm -r ~/list*
+rm -r ~/hlink
+rm -r
 
 # 1. создать каталог test в домашнем каталоге пользователя
 mkdir ~/test
@@ -58,7 +59,7 @@ echo $cnt_hlink $cnt_list $cnt_slink
 wc -l ~/test/list | cut -d " " -f1 >> ~/test/links/list_hlink
 
 # 9. сравнить содержимое файлов list_hlink и list_slink
-if cmp ~/test/links/list_hlink ~/test/links/list_slink 
+if diff -q ~/test/links/list_hlink ~/test/links/list_slink 
 then
 	echo "YES"
 fi
@@ -67,7 +68,7 @@ fi
 mv ~/test/list ~/test/list1
 
 # 11. сравнить содержимое файлов list_hlink и list_slink
-if cmp ~/test/links/list_hlink ~/test/links/list_slink 
+if diff -q ~/test/links/list_hlink ~/test/links/list_slink 
 then
 	echo "YES"
 fi
