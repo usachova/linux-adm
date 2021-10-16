@@ -47,8 +47,7 @@ fsck -n /dev/sda3
 fdisk /dev/sda
 # n p 3 [def] +12M w
 mkfs.ext4 /dev/sda4
-mount /dev/sda3 /mnt/journal
-tune2fs -J location=/mnt/journal /dev/sda3
+tune2fs -J location=/dev/sda4 /dev/sda3
 
 # 13. Создайте два новых раздела, размером в 100 МБайт каждый.
 fdisk /dev/sda
